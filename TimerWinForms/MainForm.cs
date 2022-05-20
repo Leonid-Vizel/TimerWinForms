@@ -137,6 +137,7 @@ namespace TimerWinForms
                     = hourLabel.Visible = minuteLabel.Visible = secondLabel.Visible = true;
                 timeLabel.Visible = false;
                 startBtn.Text = "Старт";
+                startBtn.BackColor = Color.Chartreuse;
                 Text = "Запуск таймера";
                 timerMode = false;
                 cancelBtn.Enabled = false;
