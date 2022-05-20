@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Media;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace TimerWinForms
@@ -16,8 +17,12 @@ namespace TimerWinForms
         {
             isPaused = false;
             timerMode = false;
+            SetProcessDpiAwarenessContext(-1);
             InitializeComponent();
         }
+
+        [DllImport("user32.dll")]
+        private static extern bool SetProcessDpiAwarenessContext(int value);
 
         private void OnStartPauseNextClick(object sender, EventArgs e)
         {
