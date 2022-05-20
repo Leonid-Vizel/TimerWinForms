@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
 
@@ -26,11 +27,13 @@ namespace TimerWinForms
                 {
                     secondTimer.Start();
                     startBtn.Text = "Пауза";
+                    startBtn.BackColor = Color.Yellow;
                 }
                 else
                 {
                     secondTimer.Stop();
                     startBtn.Text = "Далее";
+                    startBtn.BackColor = Color.Chartreuse;
                 }
                 isPaused = !isPaused;
             }
@@ -49,6 +52,7 @@ namespace TimerWinForms
                     = hourLabel.Visible = minuteLabel.Visible = secondLabel.Visible = false;
                 timeLabel.Visible = true;
                 startBtn.Text = "Пауза";
+                startBtn.BackColor = Color.Yellow;
                 Text = "Таймер";
                 timerMode = true;
                 secondTimer.Start();
@@ -100,11 +104,12 @@ namespace TimerWinForms
             {
                 secondTimer.Stop();
                 SystemSounds.Exclamation.Play();
-                MessageBox.Show("Таймер завершился!","Уведомление");
+                MessageBox.Show("Таймер завершился!", "Уведомление");
                 secondUpDown.Visible = minuteUpDown.Visible = hourUpDown.Visible
                     = hourLabel.Visible = minuteLabel.Visible = secondLabel.Visible = true;
                 timeLabel.Visible = false;
                 startBtn.Text = "Старт";
+                startBtn.BackColor = Color.Chartreuse;
                 Text = "Запуск таймера";
                 timerMode = false;
                 cancelBtn.Enabled = false;
@@ -120,13 +125,13 @@ namespace TimerWinForms
                 hours--;
                 minutes = 59;
             }
-            timeLabel.Text = GetTimeStirng(seconds,minutes,hours);
+            timeLabel.Text = GetTimeStirng(seconds, minutes, hours);
         }
 
         private void OnCancelClick(object sender, EventArgs e)
         {
             secondTimer.Stop();
-            if (MessageBox.Show("Вы действительно хотите остановить таймер?","Предупреждение", MessageBoxButtons.YesNo)== DialogResult.Yes)
+            if (MessageBox.Show("Вы действительно хотите остановить таймер?", "Предупреждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 secondUpDown.Visible = minuteUpDown.Visible = hourUpDown.Visible
                     = hourLabel.Visible = minuteLabel.Visible = secondLabel.Visible = true;
